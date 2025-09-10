@@ -55,7 +55,9 @@
                         <h5 class="text-lg font-semibold">نظرات:</h5>
 
                         @forelse($comments as $comment)
-                            @include('news.component.comment-card')
+                            <div class="bg-gray-100 my-6 rounded-lg py-4 px-5">
+                                @include('news.component.comment-card')
+                            </div>
                         @empty
                             <p class="my-3 text-gray-500">نظری ثبت نشده است.</p>
                         @endforelse

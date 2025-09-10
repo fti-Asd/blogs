@@ -1,4 +1,4 @@
-<div class="bg-gray-100 my-6 rounded-lg p-4">
+<div>
     <div class="mt-8">
         <div class="flex items-center justify-between">
             <div class="flex items-center">
@@ -36,11 +36,19 @@
                 </div>
             </div>
 
-            <a href="{{ route('news.show',['newsId'=> $news->id,'commentId' => $comment->id ]) }}"
-               id="show-comment-form-{{$comment->id}}"
-               class="text-slate-400 hover:text-indigo-600 duration-500 ms-5 cursor-pointer">
-                پاسخ
-            </a>
+            @if(request()->has('commentId'))
+                <a href="{{ route('news.show', ['newsId'=> $news->id ]) }}"
+                   id="show-comment-form-{{$comment->id}}"
+                   class="text-slate-400 hover:text-indigo-600 duration-500 ms-5 cursor-pointer">
+                    بستن
+                </a>
+            @else
+                <a href="{{ route('news.show',['newsId'=> $news->id,'commentId' => $comment->id ]) }}"
+                   id="show-comment-form-{{$comment->id}}"
+                   class="text-slate-400 hover:text-indigo-600 duration-500 ms-5 cursor-pointer">
+                    پاسخ
+                </a>
+            @endif
         </div>
         <div
             class="p-4 bg-gray-50 dark:bg-slate-800 rounded-md shadow dark:shadow-gray-800 mt-6">
