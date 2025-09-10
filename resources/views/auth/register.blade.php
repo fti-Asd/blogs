@@ -23,7 +23,7 @@
                         <form action="{{ route('auth.register.post') }}" method="POST" class="text-start">
                             @csrf
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <!-- first name -->
                                 <div class="col-span-1">
                                     <label class="font-semibold text-sm" for="first_name">

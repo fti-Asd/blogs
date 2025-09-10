@@ -60,10 +60,10 @@ return [
             'report' => false,
         ],
 
-        'news_filesystem' => [
+        'blogs_filesystem' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/news'),
-            'url' => env('APP_URL').'/news',
+            'root' => storage_path('app/blogs'),
+            'url' => env('APP_URL').'/blogs',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,
@@ -83,7 +83,7 @@ return [
     */
 
     'links' => [
-        public_path('/news') => storage_path('app/public/news'),
+        public_path('/blogs') => storage_path('app/blogs'),
     ],
 
 ];

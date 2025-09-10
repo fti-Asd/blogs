@@ -2,19 +2,18 @@
     <div
         class="p-6 relative rounded-md shadow dark:shadow-gray-700 bg-white dark:bg-slate-900 -mt-48">
         <div class="profile-pic text-center mb-5">
-            <input id="pro-img" name="profile-image" type="file" class="hidden"
-                   onchange="loadFile(event)">
             <div>
-                <div class="relative size-24 mx-auto">
-                    <img src="{{ asset('assets/account/assets/images/client/05.jpg') }}"
-                         class="rounded-full shadow dark:shadow-gray-700 ring-4 ring-slate-50 dark:ring-slate-800"
-                         id="profile-image" alt="">
-                    <label class="absolute inset-0 cursor-pointer" for="pro-img"></label>
+                <div class="relative mx-auto">
+                    <img
+                        src="{{auth('web')->user()->avatar_file_id != null ? getUserFullAvatar(auth()->user()->id) : asset('assets/account/assets/images/client/04.jpg') }}"
+                        class="rounded-full w-24 h-24 object-cover mx-auto shadow dark:shadow-gray-700 ring-4 ring-slate-50 dark:ring-slate-800"
+                        alt="عکس کاربر"
+                    >
                 </div>
 
                 <div class="mt-4">
-                    <h5 class="text-lg font-semibold">{{ getAuthenticatedUserFullName() }}</h5>
-                    <p class="text-slate-400">{{ auth()->user()->email }}</p>
+                    <h5 class="text-lg font-semibold text-sm mb-1">{{ getAuthenticatedUserFullName() }}</h5>
+                    <p class="text-slate-400 text-sm">{{ auth()->user()->email }}</p>
                 </div>
             </div>
         </div>

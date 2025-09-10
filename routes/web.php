@@ -24,6 +24,9 @@ Route::prefix('news')->as('news.')->controller(NewsController::class)->group(cal
 
 Route::prefix('account')->as('account.')->middleware('auth:web')->group(function () {
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/delete-account', [ProfileController::class, 'delete'])->name('delete-account');
+
     Route::get('/liked-news', [LikedNewsController::class, 'likedNews'])->name('liked-news');
     Route::get('/comments', [CommentsController::class, 'comments'])->name('comments');
 });

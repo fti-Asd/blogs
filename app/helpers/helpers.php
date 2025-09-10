@@ -50,3 +50,16 @@ if (!function_exists('getFullName')) {
     }
 }
 
+
+if (!function_exists('getUserFullAvatar')) {
+    function getUserFullAvatar(string $userId): string
+    {
+        $user = User::query()
+            ->where('id', $userId)
+            ->with('file')
+            ->first();
+
+        return env('APP_URL') . '/blogs/' . $user->file?->path;
+    }
+}
+
