@@ -1278,6 +1278,9 @@ video {
 .w-64{
   width: 16rem !important;
 }
+.w-7{
+    width: 1.5rem !important;
+}
 .w-8{
   width: 2rem !important;
 }

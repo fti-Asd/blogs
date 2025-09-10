@@ -4,6 +4,7 @@
 use App\Models\Admin;
 use App\Models\NewsCategory;
 use App\Models\User;
+use Carbon\Carbon;
 
 if (!function_exists('backWithError')) {
     function backWithError(string $message): string
@@ -60,6 +61,14 @@ if (!function_exists('getUserFullAvatar')) {
             ->first();
 
         return env('APP_URL') . '/blogs/' . $user->file?->path;
+    }
+}
+
+
+if (!function_exists('getShamsiDate')) {
+    function getShamsiDate(Carbon $created_at): string
+    {
+        return $created_at->toJalali()->format('H:i Y/m/d');
     }
 }
 

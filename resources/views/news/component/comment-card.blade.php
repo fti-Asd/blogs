@@ -32,7 +32,7 @@
                         </div>
                     @endif
 
-                    <p class="text-sm text-slate-400">{{ $comment->created_at->toJalali()->format('H:s Y/m/d') }}</p>
+                    <p class="text-sm text-slate-400">{{ getShamsiDate($comment->created_at) }}</p>
                 </div>
             </div>
 

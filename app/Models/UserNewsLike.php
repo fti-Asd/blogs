@@ -19,6 +19,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property string|null $deleted_at
+ * 
+ * @property News $news
+ * @property User $user
  *
  * @package App\Models
  */
@@ -37,4 +40,14 @@ class UserNewsLike extends Model
 		'user_id',
 		'news_id'
 	];
+
+	public function news()
+	{
+		return $this->belongsTo(News::class);
+	}
+
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
 }

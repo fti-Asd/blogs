@@ -27,7 +27,7 @@
                 <i class="uil uil-arrow-left"></i>
             </a>
 
-            <p class="text-gray-500">{{ $newsItem->created_at->toJalali()->format('H:i Y/m/d') }}</p>
+            <p class="text-gray-500">{{ getShamsiDate($newsItem->created_at) }}</p>
         </div>
     </div>
 </div>

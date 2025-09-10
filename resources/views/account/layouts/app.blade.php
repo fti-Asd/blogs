@@ -24,6 +24,7 @@
     <link href="{{ asset('assets/account/assets/libs/@mdi/font/css/materialdesignicons.min.css') }}" rel="stylesheet"
           type="text/css">
     <link rel="stylesheet" href="{{ asset('assets/account/assets/css/tailwind.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}">
 
 </head>
 
@@ -68,13 +69,16 @@
                 </div>
 
                 <div class="grid md:grid-cols-12 grid-cols-1 w-full">
-                    @include('account.layouts.menu')
+                    <div class="xl:col-span-3 lg:col-span-3 md:col-span-4 mx-6">
+                        @include('account.layouts.menu')
+                    </div>
 
-                    @yield('account-content')
+                    <div class="xl:col-span-9 lg:col-span-9 md:col-span-8 mt-6">
+                        @yield('account-content')
+                    </div>
                 </div>
                 <!-- End Content -->
             </div>
-
 
             <!-- Footer Start -->
             @include('account.layouts.footer')

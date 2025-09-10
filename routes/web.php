@@ -28,6 +28,8 @@ Route::prefix('account')->as('account.')->middleware('auth:web')->group(function
     Route::get('/delete-account', [ProfileController::class, 'delete'])->name('delete-account');
 
     Route::get('/liked-news', [LikedNewsController::class, 'likedNews'])->name('liked-news');
+    Route::get('/edit-like-news/{id}', [LikedNewsController::class, 'update'])->name('edit-like-news');
+
     Route::get('/comments', [CommentsController::class, 'comments'])->name('comments');
 });
 
