@@ -17,7 +17,7 @@
                     <div
                         class="relative shadow text-xs dark:shadow-gray-700 my-1 rounded-md bg-white dark:bg-slate-900 overflow-hidden">
                         <div
-                            class="relative overflow-x-auto py-2 px-4 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3 w-full dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-md">
+                            class="relative overflow-x-auto py-2 px-4 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3 text-xs text-gray-400 font-bold w-full dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-md">
                             <p class="text-start py-4">عنوان خبر</p>
                             <p class="text-start py-4 hidden lg:block">دسته بندی</p>
                             <p class="text-start py-4 hidden sm:block">تاریخ ثبت نظر</p>
@@ -28,7 +28,7 @@
 
                     @forelse($comments as $comment)
                         <div
-                            class="relative shadow text-xs dark:shadow-gray-700 my-2 rounded-md bg-white dark:bg-slate-900 overflow-hidden">
+                            class="relative shadow text-xs font-medium dark:shadow-gray-700 my-2 rounded-md bg-white dark:bg-slate-900 overflow-hidden">
                             <div
                                 id="accordion-collapse-heading-1"
                                 class="relative overflow-x-auto py-2 px-4 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3 w-full dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-md"

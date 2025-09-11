@@ -14,16 +14,16 @@
                     <table class="w-full text-start">
                         <thead class="text-xs text-gray-400">
                         <tr>
-                            <th class="text-start p-4">عنوان خبر</th>
-                            <th class="text-start p-4">دسته بندی</th>
-                            <th class="text-start p-4">نویسنده</th>
-                            <th class="text-start p-4">منتشر شده در تاریخ</th>
-                            <th class="text-start p-4">عملیات</th>
+                            <th class="text-start p-6">عنوان خبر</th>
+                            <th class="text-start p-6">دسته بندی</th>
+                            <th class="text-start p-6">نویسنده</th>
+                            <th class="text-start p-6">منتشر شده در تاریخ</th>
+                            <th class="text-start p-6">عملیات</th>
                         </tr>
                         </thead>
                         <tbody>
                         @forelse($likedNewsItems as $likedNewsItem)
-                            <tr class="text-sm">
+                            <tr class="text-xs">
                                 <td class="text-start border-t border-gray-100 dark:border-gray-800 p-4">
                                     <div class="flex items-center">
                                         <a href="{{ route('news.show', $likedNewsItem->news_id) }}"
