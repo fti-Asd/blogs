@@ -10,7 +10,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Laravel\Facades\Image;
 
 class ProfileController extends Controller
 {
@@ -35,7 +34,7 @@ class ProfileController extends Controller
         $user->mobile = $inputs['mobile'];
         $user->username = $inputs['username'];
 
-        if($user->gender == UserGender::MALE->value){
+        if ($user->gender == UserGender::MALE->value) {
             $user->military_service_status = $inputs['military_service_status'];
         }
 
@@ -45,10 +44,11 @@ class ProfileController extends Controller
             $size = $file->getSize();
             $newName = $user->id . "_" . strtotime('now') . "_" . rand(0, 1000000) . "." . $extension;
 
-            $image_resized = Image::read($file->path());
-            $image_resized->resize(50, 50);
-
-            $newPath = Storage::disk('blogs_filesystem')->putFileAs('user', $file, $newName);
+            $newPath = Storage::disk('blogs_filesystem')->putFileAs(
+                'user',
+                $file,
+                $newName
+            );
 
             $avatar = File::create([
                 'name' => $newName,

@@ -72,3 +72,20 @@ if (!function_exists('getShamsiDate')) {
     }
 }
 
+
+if (!function_exists('generatePersianCaptcha')) {
+    function generatePersianCaptcha(): string
+    {
+        $persianNumbers = ["0", '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+        $length = random_int(6, 8);
+
+        $captcha = '';
+        for ($i = 0; $i < $length; $i++) {
+            $captcha .= $persianNumbers[random_int(0, 9)];
+        }
+
+        return $captcha;
+    }
+}
+

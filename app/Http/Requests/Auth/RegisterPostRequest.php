@@ -76,7 +76,11 @@ class RegisterPostRequest extends FormRequest
                 'required',
                 'string',
                 'in:1'
-            ]
+            ],
+            'captcha' => [
+                'required',
+                'int',
+            ],
         ];
     }
 

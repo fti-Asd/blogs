@@ -10,9 +10,11 @@
     "license": "MIT",
     "require": {
         "hekmatinasser/verta": "^8.5",
+        "intervention/image": "^3.11",
         "intervention/image-laravel": "^1.5",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
+        "mews/captcha": "^3.4",
         "sadegh19b/laravel-persian-validation": "^2.0"
     },
     "require-dev": {
@@ -79,6 +81,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

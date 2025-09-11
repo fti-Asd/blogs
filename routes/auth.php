@@ -13,6 +13,9 @@ Route::prefix('auth')->as('auth.')->group(function (){
 
         Route::get('register',[RegisterController::class,'index'])->name('register.index');
         Route::post('register',[RegisterController::class,'post'])->name('register.post');
+
+        Route::get('refresh-captcha',[RegisterController::class,'refreshCaptcha'])->name('refresh-captcha');
+
     });
 
     Route::get('logout', [LogoutController::class,'index'])->name('logout.index');

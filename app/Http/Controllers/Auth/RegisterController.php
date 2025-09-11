@@ -16,7 +16,10 @@ class RegisterController extends Controller
     //
     public function index()
     {
-        return view('auth.register',[
+        $captcha = generatePersianCaptcha();
+        session(['captcha' => $captcha]);
+
+        return view('auth.register', [
             'withoutLayout' => true
         ]);
     }
@@ -27,7 +30,11 @@ class RegisterController extends Controller
 
         $inputs['password'] = Hash::make($inputs['password']);
 
-        try{
+        if ($request->captcha !== session('captcha')) {
+            return back()->withErrors(['captcha' => 'کد امنیتی اشتباه است']);
+        }
+
+        try {
             $user = User::create([
                 "first_name" => $inputs['first_name'],
                 "last_name" => $inputs['last_name'],
@@ -39,7 +46,7 @@ class RegisterController extends Controller
                 "username" => $inputs['username'],
                 "password" => $inputs['password'],
             ]);
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             Log::error($exception);
 
             return backWithError("خطا رخ داد، مجدد تلاش کنید");
@@ -49,5 +56,12 @@ class RegisterController extends Controller
         session(['password' => $request->input('password')]);
 
         return redirect()->route('send-email');
+    }
+
+    public function refreshCaptcha()
+    {
+        $captcha = generatePersianCaptcha();
+        session(['captcha' => $captcha]);
+        return response()->json(['captcha' => $captcha]);
     }
 }

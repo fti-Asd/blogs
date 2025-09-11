@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('custom-css')
+    <link rel="stylesheet" href="{{ asset('assets/css/register/register.css') }}">
+@endpush
+
 @section('content')
     <section
         class="h-full w-full flex items-center bg-[url('../../assets/images/cta.jpg')] bg-no-repeat bg-center bg-cover">
@@ -226,6 +230,37 @@
                                     <p class="text-red-600 text-sm">{{ $message }}</p>
                                     @enderror
                                 </div>
+
+                                <div class="col-span-1">
+                                    <label class="font-semibold text-sm" for="captcha">
+                                        کد امنیتی
+                                        <span class="text-red-600">*</span>
+                                    </label>
+                                    <input type="text"
+                                           name="captcha"
+                                           id="captcha"
+                                           class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                                    >
+                                </div>
+
+                                <div class="col-span-1">
+                                    <div class="flex justify-between items-center gap-3">
+                                        <div class="captcha-container w-full">
+                                            <span id="persian-captcha" style="display:none">{{ session('captcha') }}</span>
+                                            @foreach(str_split(session('captcha')) as $digit)
+                                                <img width="20" height="20"
+                                                     src="{{ asset('assets/icons/captcha/' . $digit . '.jpg') }}"
+                                                     alt="{{ $digit }}">
+                                            @endforeach
+                                        </div>
+                                        <button type="button" onclick="refreshCaptcha()" class="my-auto mt-8">
+                                            <img width="30" height="30"
+                                                 src="{{ asset('assets/icons/reload.png') }}"
+                                                 alt="رفرش"
+                                            >
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="grid grid-cols-1 gap-3 mt-6">
@@ -239,7 +274,9 @@
                                                 value="{{ 1 }}"
                                                 id="accept_rules"
 
-                                            @if(old('accept_rules')) {{ "checked" }} @endif
+                                            @if(old('accept_rules'))
+                                                {{ "checked" }}
+                                                @endif
                                             >
                                             <label class="form-check-label text-slate-400"
                                                    for="accept_rules"
@@ -288,3 +325,7 @@
         </a>
     </div>
 @endsection
+
+@push('custom-js')
+    <script src="{{ asset('assets/js/register/register.js') }}"></script>
+@endpush

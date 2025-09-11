@@ -32,5 +32,3 @@ Route::prefix('account')->as('account.')->middleware('auth:web')->group(function
 
     Route::get('/comments', [CommentsController::class, 'comments'])->name('comments');
 });
-
-
