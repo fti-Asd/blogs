@@ -31,7 +31,7 @@
                 <div class="dropdown">
                     <a href="javascript:void(0)"
                        class="dropdown py-3 px-5 rounded-lg text-xs font-bold inline-block tracking-wide border align-middle duration-500 text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white">
-                        <spa>{{ getAuthenticatedUserFullName() }}</spa>
+                        <span>{{ getAuthenticatedUserFullName() }}</span>
                     </a>
                     <ul class="dropdown-content text-xs font-bold flex flex-col justify-between gap-6">
                         <li><a href="{{ route('account.profile') }}" class="cursor-pointer">حساب کاربری</a></li>

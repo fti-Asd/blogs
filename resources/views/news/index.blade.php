@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @push('custom-css')
-    <link rel="stylesheet" href="{{ asset('assets/css/custom-modal.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/news/news-index.css') }}">
 @endpush
 
@@ -280,7 +279,3 @@
         </form>
     </div>
 @endsection
-
-@push('modal-js')
-    <script src="{{ asset('assets/js/modal.js')  }}"></script>
-@endpush

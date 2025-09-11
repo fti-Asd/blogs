@@ -26,9 +26,10 @@
                             <tr class="text-sm">
                                 <td class="text-start border-t border-gray-100 dark:border-gray-800 p-4">
                                     <div class="flex items-center">
-                                            <span class="ms-2 font-medium">
-                                                {{ mb_substr($likedNewsItem->news->title,0,30,'utf-8')."..." }}
-                                            </span>
+                                        <a href="{{ route('news.show', $likedNewsItem->news_id) }}"
+                                           class="ms-2 font-medium cursor-pointer hover:text-indigo-600">
+                                            {{ mb_substr($likedNewsItem->news->title,0,30,'utf-8')."..." }}
+                                        </a>
                                     </div>
                                 </td>
                                 <td class="text-start border-t border-gray-100 dark:border-gray-800 p-4">

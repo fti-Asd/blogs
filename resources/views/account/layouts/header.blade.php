@@ -33,7 +33,6 @@
         </div>
 
         <ul class="list-none mb-0 space-x-1">
-
             <!-- User/Profile Dropdown -->
             <li class="dropdown inline-block relative">
                 <button data-dropdown-toggle="dropdown" class="dropdown-toggle items-center" type="button">

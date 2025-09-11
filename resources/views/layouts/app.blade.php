@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom-modal.css') }}">
 
     @stack('custom-css')
 
@@ -92,9 +93,9 @@
 <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins.init.js') }}"></script>
 <script src="{{ asset('assets/js/app.js') }}"></script>
-@stack('custom-js')
+<script src="{{ asset('assets/js/modal.js')  }}"></script>
 
-@stack('modal-js')
+@stack('custom-js')
 <!-- JAVASCRIPTS -->
 </body>
 </html>
