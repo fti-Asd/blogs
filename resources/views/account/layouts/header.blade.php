@@ -39,7 +39,7 @@
                     <div
                         class="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-[20px] text-center bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 border border-gray-100 dark:border-gray-800 text-slate-900 dark:text-white rounded-full">
                         <img
-                            src="{{auth('web')->user()->avatar_file_id != null ? getUserFullAvatar(auth()->user()->id) : asset('assets/account/assets/images/client/04.jpg') }}"
+                            src="{{auth('web')->user()->avatar_file_id != null ? getUserFullAvatar(auth()->user()->id) : ($user->gender == \App\Enums\UserGender::FEMALE->value ? asset('assets/account/assets/images/client/05.jpg') : asset('assets/account/assets/images/client/04.jpg')) }}"
                             class="rounded-full h-8 w-8 object-cover"
                             alt="">
                     </div>

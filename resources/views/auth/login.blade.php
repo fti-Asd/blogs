@@ -16,7 +16,7 @@
                     <form class="text-start" action="{{ route('auth.login.post') }}" method="POST">
                         @csrf
 
-                        <div class="grid grid-cols-1 gap-3">
+                        <div class="grid grid-cols-1 gap-5">
                             <!-- email -->
                             <div class="col-span-1">
                                 <label class="font-semibold text-sm" for="email">
@@ -39,14 +39,14 @@
                             <!-- password -->
                             <div class="col-span-1">
                                 <label class="font-semibold text-sm" for="password">
-                                    پسوورد
+                                    رمز عبور
                                     <span class="text-red-600">*</span>
                                 </label>
                                 <input id="password"
                                        name="password"
                                        type="password"
                                        class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
-                                       placeholder="گذرواژه:"
+                                       placeholder="رمز عبور:"
                                 >
 
                                 @error('password')

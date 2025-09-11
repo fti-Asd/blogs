@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Account;
 
+use App\Enums\UserGender;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Account\ProfileUpdateRequest;
 use App\Models\File;
@@ -24,6 +25,7 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request)
     {
         $inputs = $request->validated();
+
         $id = Auth::guard('web')->id();
 
         $user = User::findOrFail($id);
@@ -32,6 +34,10 @@ class ProfileController extends Controller
         $user->last_name = $inputs['last_name'];
         $user->mobile = $inputs['mobile'];
         $user->username = $inputs['username'];
+
+        if($user->gender == UserGender::MALE->value){
+            $user->military_service_status = $inputs['military_service_status'];
+        }
 
         if ($request->has('avatar_file')) {
             $file = $request->file('avatar_file');

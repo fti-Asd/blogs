@@ -23,7 +23,7 @@
                         <form action="{{ route('auth.register.post') }}" method="POST" class="text-start">
                             @csrf
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 <!-- first name -->
                                 <div class="col-span-1">
                                     <label class="font-semibold text-sm" for="first_name">
@@ -31,7 +31,7 @@
                                         <span class="text-red-600">*</span>
                                     </label>
                                     <input id="first_name" name="first_name" value="{{ old('first_name') }}" type="text"
-                                           class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                                           class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                            placeholder="هری"
                                     >
 
@@ -47,7 +47,7 @@
                                         <span class="text-red-600">*</span>
                                     </label>
                                     <input id="last_name" name="last_name" value="{{ old('last_name') }}" type="text"
-                                           class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                                           class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                            placeholder="هری"
                                     >
 
@@ -64,7 +64,7 @@
                                     </label>
                                     <input id="national_code" name="national_code"
                                            value="{{ old('national_code') }}"
-                                           class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                                           class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                            placeholder="name@example.com"
                                     >
 
@@ -81,7 +81,7 @@
                                     </label>
                                     <select name="gender"
                                             id="gender"
-                                            class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                                            class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                     >
                                         <option
                                             value="{{ \App\Enums\UserGender::FEMALE->value }}"
@@ -109,7 +109,7 @@
                                     </label>
                                     <select name="military_service_status"
                                             id="military_service_status"
-                                            class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                                            class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                     >
                                         <option
                                             value=""
@@ -147,7 +147,7 @@
                                     <input id="mobile"
                                            name="mobile"
                                            value="{{ old('mobile') }}"
-                                           class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                                           class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                            placeholder="name@example.com"
                                     >
 
@@ -166,7 +166,7 @@
                                            name="email"
                                            value="{{ old('email') }}"
                                            type="email"
-                                           class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                                           class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                            placeholder="name@example.com"
                                     >
 
@@ -184,7 +184,7 @@
                                     <input id="username"
                                            value="{{ old('username') }}"
                                            name="username"
-                                           class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                                           class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                            placeholder="name@example.com"
                                     >
 
@@ -196,14 +196,14 @@
                                 <!-- password -->
                                 <div class="col-span-1">
                                     <label class="font-semibold text-sm" for="password">
-                                        پسوورد
+                                        رمز عبور
                                         <span class="text-red-600">*</span>
                                     </label>
                                     <input id="password"
                                            name="password"
                                            type="password"
-                                           class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
-                                           placeholder="گذرواژه:"
+                                           class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                                           placeholder="رمز عبور:"
                                     >
 
                                     @error('password')
@@ -214,12 +214,12 @@
                                 <!-- password confirmation -->
                                 <div class="col-span-1">
                                     <label class="font-semibold text-sm" for="password_confirmation">
-                                        تکرار پسسورد
+                                        تکرار رمز عبور
                                         <span class="text-red-600">*</span>
                                     </label>
                                     <input id="password_confirmation" name="password_confirmation" type="password"
-                                           class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
-                                           placeholder="گذرواژه:"
+                                           class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                                           placeholder="تکرار رمز عبور:"
                                     >
 
                                     @error('password_confirmation')

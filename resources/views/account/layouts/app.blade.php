@@ -47,7 +47,7 @@
 
 <div class="page-wrapper toggled">
     <!-- sidebar-wrapper -->
-{{--    @include('account.layouts.sidebar')--}}
+    {{--    @include('account.layouts.sidebar')--}}
     <!-- sidebar-wrapper  -->
 
     <!-- Start Page Content -->

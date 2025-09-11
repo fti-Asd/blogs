@@ -19,15 +19,16 @@
 
                     <div>
                         <div class="relative mx-auto">
-                            <img src="{{ $user->avatar_file_id != null ? getUserFullAvatar($user->id) : asset('assets/account/assets/images/client/05.jpg') }}"
-                                 class="rounded-full w-28 h-28 object-cover mx-auto shadow dark:shadow-gray-700 ring-4 ring-slate-50 dark:ring-slate-800"
-                                 id="avatar_file"
-                                 alt="عکس کاربر"
+                            <img
+                                src="{{ $user->avatar_file_id != null ? getUserFullAvatar($user->id) : ($user->gender == \App\Enums\UserGender::FEMALE->value ? asset('assets/account/assets/images/client/05.jpg') : asset('assets/account/assets/images/client/04.jpg')) }}"
+                                class="rounded-full w-28 h-28 object-cover mx-auto shadow dark:shadow-gray-700 ring-4 ring-slate-50 dark:ring-slate-800"
+                                id="avatar_file"
+                                alt="عکس کاربر"
                             >
                             <label class="absolute inset-0" for="avatar_image"></label>
                         </div>
 
-                        <div class="mt-3 mb-8 font-bold">
+                        <div class="mt-1 mb-8 font-bold">
                             تغییر عکس
                         </div>
                     </div>
@@ -37,7 +38,7 @@
                     @enderror
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-4">
                     <!-- first name -->
                     <div class="col-span-1">
                         <label class="font-semibold text-sm" for="first_name">
@@ -46,7 +47,7 @@
                         </label>
                         <input id="first_name" name="first_name" value="{{ old('first_name', $user->first_name) }}"
                                type="text"
-                               class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                               class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                placeholder="هری"
                         >
 
@@ -63,7 +64,7 @@
                         </label>
                         <input id="last_name" name="last_name" value="{{ old('last_name', $user->last_name) }}"
                                type="text"
-                               class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                               class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                placeholder="هری"
                         >
 
@@ -78,7 +79,7 @@
                             کد ملی
                             <span class="text-red-600">*</span>
                         </label>
-                        <p class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent text-gray-500 dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0">
+                        <p class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent text-gray-500 dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0">
                             {{ $user->national_code }}
                         </p>
                     </div>
@@ -90,14 +91,14 @@
                             <span class="text-red-600">*</span>
                         </label>
                         @switch($user->gender)
-                            @case(\App\Enums\UserGender::MALE)
-                                <p class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent text-gray-500 dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0">
+                            @case(\App\Enums\UserGender::MALE->value)
+                                <p class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent text-gray-500 dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0">
                                     مرد
                                 </p>
                                 @break
 
                             @default
-                                <p class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent text-gray-500 dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0">
+                                <p class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent text-gray-500 dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0">
                                     زن
                                 </p>
                                 @break
@@ -112,7 +113,7 @@
                             </label>
                             <select name="military_service_status"
                                     id="military_service_status"
-                                    class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                                    class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                             >
                                 <option
                                     value=""
@@ -120,19 +121,19 @@
                                     وضعیت نظام وظیفه...
                                 </option>
                                 <option
-                                    value="{{old('military_service_status', $user->military_service_status) }}"
+                                    value="{{ \App\Enums\UserMilitaryService::EXEMPT->value }}"
                                     @selected($user->military_service_status == \App\Enums\UserMilitaryService::EXEMPT->value)
                                 >
                                     معاف
                                 </option>
                                 <option
-                                    value="{{old('military_service_status', $user->military_service_status) }}"
+                                    value="{{ \App\Enums\UserMilitaryService::INS_SERVICE->value }}"
                                     @selected($user->military_service_status == \App\Enums\UserMilitaryService::INS_SERVICE->value)
                                 >
                                     در حال خدمت
                                 </option>
                                 <option
-                                    value="{{old('military_service_status', $user->military_service_status) }}"
+                                    value="{{ \App\Enums\UserMilitaryService::END_OF_SERVICE->value }}"
                                     @selected($user->military_service_status == \App\Enums\UserMilitaryService::END_OF_SERVICE->value)
                                 >
                                     پایان خدمت
@@ -142,6 +143,17 @@
                             @error('military_service_status')
                             <p class="text-red-600 text-sm">{{ $message }}</p>
                             @enderror
+                        </div>
+
+                    @else
+                        <div>
+                            <label class="font-semibold text-sm" for="military_service_status">
+                                وضعیت نظام وظیفه
+                            </label>
+                            <p class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                            >
+                                ندارد
+                            </p>
                         </div>
                     @endif
 
@@ -154,7 +166,7 @@
                         <input id="mobile"
                                name="mobile"
                                value="{{ old('mobile', $user->mobile) }}"
-                               class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                               class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                placeholder="name@example.com"
                         >
 
@@ -173,7 +185,7 @@
                                name="email"
                                value="{{ old('email', $user->email) }}"
                                type="email"
-                               class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                               class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                placeholder="name@example.com"
                         >
 
@@ -191,8 +203,42 @@
                         <input id="username"
                                value="{{ old('username', $user->username) }}"
                                name="username"
-                               class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                               class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                placeholder="name@example.com"
+                        >
+
+                        @error('username')
+                        <p class="text-red-600 text-sm">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- state_id -->
+                    <div class="col-span-1">
+                        <label class="font-semibold text-sm" for="username">
+                            استان خود را انتخاب کنید
+                        </label>
+                        <input id="state_id"
+                               value="{{ old('state_id', $user->state_id) }}"
+                               name="state_id"
+                               class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                               placeholder="مازندران"
+                        >
+
+                        @error('state_id')
+                        <p class="text-red-600 text-sm">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- city_id -->
+                    <div class="col-span-1">
+                        <label class="font-semibold text-sm" for="username">
+                            شهر خود را انتخاب کنید
+                        </label>
+                        <input id="city_id"
+                               value="{{ old('city_id', $user->city_id) }}"
+                               name="city_id"
+                               class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                               placeholder="ساری"
                         >
 
                         @error('username')
@@ -203,13 +249,13 @@
                     <!-- password -->
                     <div class="col-span-1">
                         <label class="font-semibold text-sm" for="password">
-                            پسوورد
+                            رمز عبور
                             <span class="text-red-600">*</span>
                         </label>
                         <input id="password"
                                name="password"
                                type="password"
-                               class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                               class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                placeholder="در صورت تمایل رمز عبور را تغییر دهید"
                         >
 
@@ -217,21 +263,21 @@
                         <p class="text-red-600 text-sm">{{ $message }}</p>
                         @enderror
                     </div>
-                </div>
 
-                <!-- password confirmation -->
-                <div class="col-span-2">
-                    <label class="font-semibold text-sm" for="password_confirmation">
-                        تکرار پسسورد
-                        <span class="text-red-600">*</span>
-                    </label>
-                    <input id="password_confirmation" name="password_confirmation" type="password"
-                           class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
-                    >
+                    <!-- password confirmation -->
+                    <div class="col-span-1">
+                        <label class="font-semibold text-sm" for="password_confirmation">
+                            تکرار رمز عبور
+                            <span class="text-red-600">*</span>
+                        </label>
+                        <input id="password_confirmation" name="password_confirmation" type="password"
+                               class="form-input mt-1 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                        >
 
-                    @error('password_confirmation')
-                    <p class="text-red-600 text-sm">{{ $message }}</p>
-                    @enderror
+                        @error('password_confirmation')
+                        <p class="text-red-600 text-sm">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 gap-3 mt-6">
