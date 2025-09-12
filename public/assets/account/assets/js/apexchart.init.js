@@ -9,81 +9,125 @@
 
 try {
 
-    var options1 = {
+    function loadChart(filter = 'Y') {
+        fetch(`/admin/chart-data?filter=${filter}`)
+            .then(res => res.json())
+            .then(data => {
+                var options = {
+                    chart: {
+                        type: 'bar',
+                        height: 400
+                    },
+                    series: [{
+                        name: 'تعداد بازدید',
+                        data: data.totals
+                    }],
+                    xaxis: {
+                        categories: data.labels
+                    },
+                    colors: ['#3B82F6'],
+                    plotOptions: {
+                        bar: {
+                            borderRadius: 6
+                        }
+                    }
+                };
 
-        series: [{
-            name: 'سود',
-            data: [500, 653, 548, 482, 553, 570, 560, 610, 580, 854, 945, 1150],
-        }, {
-            name: 'مخارج',
-            data: [246, 379, 521, 453, 243, 264, 333, 246, 468, 222, 456, 789]
-        }],
-        chart: {
-            type: 'bar',
-            height: 350,
-            toolbar: {
-                show: false,
-                autoSelected: 'zoom'
-            },
-        },
-        grid: {
-            strokeDashArray: 5,
-      
-        },
-        plotOptions: {
-            bar: {
-                borderRadius: 5,
-                horizontal: false,
-                columnWidth: '40%',
-                endingShape: 'rounded',
-            },
-        },
-        dataLabels: {
-            enabled: false
-        },
-        stroke: {
-            show: true,
-            width: 2,
-            colors: ['transparent']
-        },
-        colors: ['#4f46e5', '#10b981'],
-        xaxis: {
-            categories: ['اسفند', 'بهمن', 'دی', 'آذر', 'آبان', 'مهر', 'شهریور', 'مرداد', 'تیر', 'خرداد', 'اردیبهشت', 'فروردین'],
+                document.querySelector("#mainchart").innerHTML = "";
+                var chart = new ApexCharts(document.querySelector("#mainchart"), options);
+                chart.render();
+            });
+    }
 
-        },
-        yaxis: {
-            title: {
-                text: 'سود',
-    
-                style: {
-                    colors: ['#8492a6'],
-                    fontSize: '16px',
-                    fontFamily: 'iransans',
-                    fontWeight: 600,
-                },
-            },
+// Load default chart (yearly)
+    loadChart('Y');
 
-
-
-        },
-        fill: {
-            opacity: 1,
-        },
-        tooltip: {
-            y: {
-
-                formatter: function (val) {
-                    return val + " تومان "
-                }
-            }
-        }
-    };
-    
-    var chart1 = new ApexCharts(document.querySelector("#mainchart"), options1);
-    chart1.render();
+// Listen to dropdown change
+    document.getElementById("site_visits_chart").addEventListener("change", function () {
+        loadChart(this.value);
+    });
 } catch (error) {
-    
+
 }
+
+
+// try {
+//
+//     var options1 = {
+//
+//         series: [{
+//             name: 'سود',
+//             data: [500, 653, 548, 482, 553, 570, 560, 610, 580, 854, 945, 1150],
+//         }, {
+//             name: 'مخارج',
+//             data: [246, 379, 521, 453, 243, 264, 333, 246, 468, 222, 456, 789]
+//         }],
+//         chart: {
+//             type: 'bar',
+//             height: 350,
+//             toolbar: {
+//                 show: false,
+//                 autoSelected: 'zoom'
+//             },
+//         },
+//         grid: {
+//             strokeDashArray: 5,
+//
+//         },
+//         plotOptions: {
+//             bar: {
+//                 borderRadius: 5,
+//                 horizontal: false,
+//                 columnWidth: '40%',
+//                 endingShape: 'rounded',
+//             },
+//         },
+//         dataLabels: {
+//             enabled: false
+//         },
+//         stroke: {
+//             show: true,
+//             width: 2,
+//             colors: ['transparent']
+//         },
+//         colors: ['#4f46e5', '#10b981'],
+//         xaxis: {
+//             categories: ['اسفند', 'بهمن', 'دی', 'آذر', 'آبان', 'مهر', 'شهریور', 'مرداد', 'تیر', 'خرداد', 'اردیبهشت', 'فروردین'],
+//
+//         },
+//         yaxis: {
+//             title: {
+//                 text: 'سود',
+//
+//                 style: {
+//                     colors: ['#8492a6'],
+//                     fontSize: '16px',
+//                     fontFamily: 'iransans',
+//                     fontWeight: 600,
+//                 },
+//             },
+//
+//
+//
+//         },
+//         fill: {
+//             opacity: 1,
+//         },
+//         tooltip: {
+//             y: {
+//
+//                 formatter: function (val) {
+//                     return val + " تومان "
+//                 }
+//             }
+//         }
+//     };
+//
+//     var chart1 = new ApexCharts(document.querySelector("#mainchart"), options1);
+//     chart1.render();
+// } catch (error) {
+//
+// }
 
 //CryptoCurrency
 
@@ -143,13 +187,13 @@ try {
     var chart = new ApexCharts(document.querySelector("#chart-1"), options);
     chart.render();
 
-    
+
 } catch (error) {
-    
+
 }
 
 //chart 2
-    try {
+try {
     var options = {
         series: [{
             data: [10, 25, 30, 54, 45, 39, 15]
@@ -199,9 +243,9 @@ try {
 
     var chart = new ApexCharts(document.querySelector("#chart-2"), options);
     chart.render();
-    
+
 } catch (error) {
-    
+
 }
 
 
@@ -256,9 +300,9 @@ try {
 
     var chart = new ApexCharts(document.querySelector("#chart-3"), options);
     chart.render();
-    
+
 } catch (error) {
-    
+
 }
 
 
@@ -313,9 +357,9 @@ try {
 
     var chart = new ApexCharts(document.querySelector("#chart-4"), options);
     chart.render();
-    
+
 } catch (error) {
-    
+
 }
 
 //Chart 5
@@ -369,9 +413,9 @@ try {
 
     var chart = new ApexCharts(document.querySelector("#chart-5"), options);
     chart.render();
-    
+
 } catch (error) {
-    
+
 }
 
 //Chart 6
@@ -425,7 +469,7 @@ try {
 
     var chart = new ApexCharts(document.querySelector("#chart-6"), options);
     chart.render();
-    
+
 } catch (error) {
-    
+
 }

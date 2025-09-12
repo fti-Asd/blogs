@@ -46,11 +46,14 @@ class NewsController extends Controller
         $news = News::findOrFail($newsId);
 
         $alreadyVisited = SiteVisit::query()
-            ->checkIfExists();
+            ->checkIfExists()
+            ->get();
 
-        if (!$alreadyVisited) {
+//        dd($alreadyVisited->toArray());
+
+        if (empty($alreadyVisited->toArray())) {
             SiteVisit::create([
-                'user_id' => Auth::check() ? Auth::id() : null,
+                'user_id' => Auth::check() ? Auth::guard('web')->id() : null,
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->header('User-Agent'),
                 'url' => $request->fullUrl(),
@@ -60,8 +63,6 @@ class NewsController extends Controller
         $siteVisitsQty = SiteVisit::query()
             ->where('url', $request->fullUrl())
             ->count();
-
-//        dd($siteVisitsQty);
 
         $comments = Comment::query()
             ->where('news_id', $news->id)

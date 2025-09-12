@@ -20,7 +20,7 @@
                     <div>
                         <div class="relative mx-auto">
                             <img
-                                src="{{ $user->avatar_file_id != null ? getUserFullAvatar($user->id) : ($user->gender == \App\Enums\UserGender::FEMALE->value ? asset('assets/account/assets/images/client/05.jpg') : asset('assets/account/assets/images/client/04.jpg')) }}"
+                                src="{{ $user->avatar_file_id != null ? getUserFullAvatar($user->id, null) : ($user->gender == \App\Enums\UserGender::FEMALE->value ? asset('assets/account/assets/images/client/05.jpg') : asset('assets/account/assets/images/client/04.jpg')) }}"
                                 class="rounded-full w-28 h-28 object-cover mx-auto shadow dark:shadow-gray-700 ring-4 ring-slate-50 dark:ring-slate-800"
                                 id="avatar_file"
                                 alt="عکس کاربر"

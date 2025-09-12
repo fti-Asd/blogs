@@ -55,7 +55,7 @@ class SiteVisit extends Model
             ->where('url', request()->fullUrl())
             ->where(function ($query) {
                 if (Auth::check()) {
-                    $query->where('user_id', Auth::id());
+                    $query->where('user_id', Auth::guard('web')->id());
                 } else {
                     $query->where('ip_address', request()->ip());
                 }

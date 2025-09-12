@@ -3,6 +3,8 @@ $(document).ready(function () {
         $.getJSON('/auth/refresh-captcha', function(data) {
             var captcha = data.captcha;
 
+            console.log(data)
+
             var $captchaEl = $('#persian-captcha');
             $captchaEl.text(captcha);
 

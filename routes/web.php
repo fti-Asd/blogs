@@ -23,7 +23,11 @@ Route::prefix('news')->as('news.')->controller(NewsController::class)->group(cal
 });
 
 Route::prefix('account')->as('account.')->middleware('auth:web')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/', 'profile')->name('profile');
+        Route::get('/profile', 'profile')->name('profile');
+    });
+
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/delete-account', [ProfileController::class, 'delete'])->name('delete-account');
 

@@ -2,7 +2,9 @@
 
 
 use App\Models\Admin;
+use App\Models\News;
 use App\Models\NewsCategory;
+use App\Models\SiteVisit;
 use App\Models\User;
 use Carbon\Carbon;
 
@@ -53,14 +55,25 @@ if (!function_exists('getFullName')) {
 
 
 if (!function_exists('getUserFullAvatar')) {
-    function getUserFullAvatar(string $userId): string
+    function getUserFullAvatar(int $userId = null, int $adminId = null): string
     {
-        $user = User::query()
-            ->where('id', $userId)
+        $info = [];
+
+        if ($userId) {
+            $info = User::query()
+                ->where('id', $userId)
+                ->with('file')
+                ->first();
+
+            return env("APP_URL") . '/blogs/' . $info->file?->path;
+        }
+
+        $info = Admin::query()
+            ->where('id', $adminId)
             ->with('file')
             ->first();
 
-        return env('APP_URL') . '/blogs/' . $user->file?->path;
+        return env("APP_URL") . '/blogs/' . $info->file?->path;
     }
 }
 
@@ -71,7 +84,6 @@ if (!function_exists('getShamsiDate')) {
         return $created_at->toJalali()->format('H:i Y/m/d');
     }
 }
-
 
 if (!function_exists('generatePersianCaptcha')) {
     function generatePersianCaptcha(): string
@@ -86,6 +98,30 @@ if (!function_exists('generatePersianCaptcha')) {
         }
 
         return $captcha;
+    }
+}
+
+if (!function_exists('getSiteVisitsQty')) {
+    function getSiteVisitsQty(): string
+    {
+        return SiteVisit::count();
+    }
+}
+
+if (!function_exists('getAuthorsQty')) {
+    function getAuthorsQty(): string
+    {
+        return
+            Admin::query()
+                ->where('role_id', 2)
+                ->count();
+    }
+}
+
+if (!function_exists('getNewsQty')) {
+    function getNewsQty(): string
+    {
+        return News::count();
     }
 }
 

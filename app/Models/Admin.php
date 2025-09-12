@@ -10,10 +10,10 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
 /**
  * Class Admin
- * 
+ *
  * @property int $id
  * @property string $first_name
  * @property string $last_name
@@ -29,14 +29,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property string|null $deleted_at
- * 
+ *
  * @property File $file
  * @property Collection|Log[] $logs
  * @property Collection|News[] $news
  *
  * @package App\Models
  */
-class Admin extends Model
+class Admin extends Authenticatable
 {
 	use SoftDeletes;
 	protected $table = 'admins';
