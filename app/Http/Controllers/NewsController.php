@@ -10,9 +10,11 @@ use App\Http\Requests\NewsPostReplyCommentRequest;
 use App\Models\Comment;
 use App\Models\News;
 use App\Models\NewsCategory;
+use App\Models\SiteVisit;
 use App\Models\UserNewsLike;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -39,9 +41,27 @@ class NewsController extends Controller
         return view('news.index', compact('newsCategories', 'newsItems', 'categoryName'));
     }
 
-    public function show(string $newsId)
+    public function show(string $newsId, Request $request)
     {
         $news = News::findOrFail($newsId);
+
+        $alreadyVisited = SiteVisit::query()
+            ->checkIfExists();
+
+        if (!$alreadyVisited) {
+            SiteVisit::create([
+                'user_id' => Auth::check() ? Auth::id() : null,
+                'ip_address' => $request->ip(),
+                'user_agent' => $request->header('User-Agent'),
+                'url' => $request->fullUrl(),
+            ]);
+        }
+
+        $siteVisitsQty = SiteVisit::query()
+            ->where('url', $request->fullUrl())
+            ->count();
+
+//        dd($siteVisitsQty);
 
         $comments = Comment::query()
             ->where('news_id', $news->id)
@@ -50,12 +70,12 @@ class NewsController extends Controller
             ->getReplyCommentData()
             ->get();
 
-        $isUserLikeNews = UserNewsLike::query()
+        $isUserLikedNews = UserNewsLike::query()
             ->where('user_id', Auth::guard('web')?->user()?->id)
             ->where('news_id', $newsId)
             ->exists();
 
-        return view('news.show', compact('news', 'comments', 'isUserLikeNews'));
+        return view('news.show', compact('news', 'comments', 'isUserLikedNews', 'siteVisitsQty'));
     }
 
     public function postComment(NewsPostCommentRequest $request, string $newsId)

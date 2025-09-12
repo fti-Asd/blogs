@@ -18,35 +18,46 @@
                             <p class="text-slate-400 mt-3">{{ $news->description }}</p>
                         </div>
 
-                        <div class="my-4 flex justify-end items-center gap-3">
-                            <p class="my-auto">{{ number_format($news->like_qty) }}</p>
+                        <div class="my-4 flex justify-between items-center">
+                            <div class="flex justify-between items-center gap-2">
+                                @if(auth('web')->check())
+                                    <form action="{{ route('news.like') }}" method="POST" class="my-auto">
+                                        @csrf
 
-                            @if(auth('web')->check())
-                                <form action="{{ route('news.like') }}" method="POST" class="my-auto">
-                                    @csrf
+                                        <input name="user_id" value="{{ auth('web')->user()->id }}"
+                                               hidden/>
+                                        <input name="news_id" value="{{ $news->id }}"
+                                               hidden/>
 
-                                    <input name="user_id" value="{{ auth('web')->user()->id }}"
-                                           hidden/>
-                                    <input name="news_id" value="{{ $news->id }}"
-                                           hidden/>
+                                        <button type="submit" class="flex justify-center items-center">
+                                            @if($isUserLikedNews)
+                                                <img width="20" height="20"
+                                                     src="{{ asset('assets/icons/heart-fill.png') }}"
+                                                     alt="لایک خبر"/>
+                                            @else
+                                                <img width="20" height="20"
+                                                     src="{{ asset('assets/icons/heart-empty.png') }}"
+                                                     alt="لایک خبر"/>
+                                            @endif
+                                        </button>
+                                    </form>
+                                @else
+                                    <div onclick="alert('لطفا ابتدا ثبت نام کنید')">
+                                        <img width="20" height="20" src="{{ asset('assets/icons/heart-empty.png') }}"
+                                             alt="لایک خبر"/>
+                                    </div>
+                                @endif
 
-                                    <button type="submit" class="flex justify-center items-center">
-                                        @if($isUserLikeNews)
-                                            <img width="20" height="20" src="{{ asset('assets/icons/heart-fill.png') }}"
-                                                 alt="لایک خبر"/>
-                                        @else
-                                            <img width="20" height="20"
-                                                 src="{{ asset('assets/icons/heart-empty.png') }}"
-                                                 alt="لایک خبر"/>
-                                        @endif
-                                    </button>
-                                </form>
-                            @else
-                                <div onclick="alert('لطفا ابتدا ثبت نام کنید')">
-                                    <img width="20" height="20" src="{{ asset('assets/icons/heart-empty.png') }}"
-                                         alt="لایک خبر"/>
-                                </div>
-                            @endif
+                                <p class="my-auto">{{ number_format($news->like_qty) }}</p>
+                            </div>
+
+                            <div class="flex justify-between items-center gap-2">
+                                <img width="20" height="20"
+                                     src="{{ asset('assets/icons/eye.png') }}"
+                                     alt="تعداد بازدید از خبر"/>
+
+                                <p>{{ number_format($siteVisitsQty) }}</p>
+                            </div>
                         </div>
                     </div>
 
